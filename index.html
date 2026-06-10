@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 行動藍圖：行銷素材點擊率預測與分析 (安全儲存版)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            orange: '#f97316',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen font-sans antialiased custom-scrollbar">
+
+    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-brand-600 text-white p-2 rounded-lg shadow-lg shadow-brand-500/20">
+                    <i class="fa-solid fa-brain-circuit text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-brand-500 uppercase tracking-widest">AI Action Blueprint</span>
+                    <h1 class="text-lg font-bold text-white">智慧行銷素材成效預測儀表板 (含多重備份功能)</h1>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 bg-slate-800/50 px-4 py-2 rounded-full border border-slate-700/50 w-full sm:w-auto justify-between sm:justify-start">
+                <div class="text-sm">
+                    <span class="text-slate-400">專案落地進度：</span>
+                    <span id="global-progress-text" class="font-bold text-brand-500">0%</span>
+                </div>
+                <div class="w-32 bg-slate-700 h-2 rounded-full overflow-hidden">
+                    <div id="global-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-500 h-full w-0 transition-all duration-500"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-8">
+        
+        <section class="mb-8 bg-gradient-to-r from-slate-900 via-slate-900 to-brand-950/40 rounded-2xl border border-slate-800 p-6 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500/5 rounded-full blur-3xl -z-10"></div>
+            
+            <div class="flex items-start gap-4 mb-6">
+                <div class="bg-brand-500/10 text-brand-500 p-3 rounded-xl hidden md:block">
+                    <i class="fa-solid fa-list-check text-2xl"></i>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-brand-500/10 text-brand-400 mb-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+                        原始藍圖規劃
+                    </div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white mb-2">分析過去行銷素材成效，預測本次活動最高點擊率的文案與圖片</h2>
+                    <p class="text-slate-400 text-sm max-w-3xl">此為您建立的 AI 轉型行動藍圖草稿，核心目的在於透過多維度數據交叉分析，預先找出最高 CTR 的黃金組合。</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
+                <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                    <div class="text-xs font-semibold text-brand-400 mb-2 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-brand-500"></span> 1. 欲解決問題
+                    </div>
+                    <p class="text-sm text-slate-200">分析過去行銷素材成效，預測本次活動最高點擊率的文案與圖片。</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                    <div class="text-xs font-semibold text-teal-400 mb-2 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-teal-500"></span> 2. 可用資料
+                    </div>
+                    <p class="text-sm text-slate-200">歷史素材與成效數據、網站停留與轉換率、社群媒體互動數據（讚/分/留）。</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                    <div class="text-xs font-semibold text-amber-400 mb-2 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-amber-500"></span> 3. 預測與判斷
+                    </div>
+                    <p class="text-sm text-slate-200">預測本次活動各素材組合點擊率，並推薦最高點擊率的組合。</p>
+                </div>
+                <div class="bg-slate-950/60 p-4 rounded-xl border border-slate-800 hover:border-slate-700 transition-colors">
+                    <div class="text-xs font-semibold text-rose-400 mb-2 flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-rose-500"></span> 4. 對應行動
+                    </div>
+                    <p class="text-sm text-slate-200">採用 AI 推薦的最高點擊率組合，立即用於活動發布，並持續監測成效。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex border-b border-slate-800 mb-8 overflow-x-auto custom-scrollbar whitespace-nowrap gap-2">
+            <button onclick="switchTab('tab-report')" id="btn-tab-report" class="tab-btn px-6 py-3 border-b-2 border-brand-500 text-brand-500 font-semibold text-sm flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-user-doctor"></i> TONY 老師藍圖健診
+            </button>
+            <button onclick="switchTab('tab-simulator')" id="btn-tab-simulator" class="tab-btn px-6 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-semibold text-sm flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-vial"></i> 互動式 CTR 預測模擬器
+            </button>
+            <button onclick="switchTab('tab-roadmap')" id="btn-tab-roadmap" class="tab-btn px-6 py-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-semibold text-sm flex items-center gap-2 transition-all">
+                <i class="fa-solid fa-route"></i> 行動落地指引 & 追蹤
+            </button>
+        </div>
+
+        <div id="tab-report" class="tab-content block space-y-8">
+            <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 flex flex-col md:flex-row gap-6 items-center">
+                <div class="w-20 h-20 rounded-full bg-brand-500/10 border-2 border-brand-500/30 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-user-tie text-3xl text-brand-500"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2">
+                        TONY 老師的溫馨叮嚀
+                    </h3>
+                    <p class="text-slate-300 leading-relaxed text-sm">
+                        「親愛的使用者，您好！很高興能審閱您這份充滿潛力的『AI 預測行動藍圖』草稿。您的規劃方向非常明確，直接切入核心痛點，這是一個非常好的開始！在生活產業中，精準的行銷素材預測能大幅提升效率與成效。您的藍圖已經具備了基礎架構，接下來，我將從專業角度為您提供優化建議與具體落地步驟，讓您的 AI 應用更具實戰價值。」
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-emerald-950/20 border border-emerald-900/50 rounded-xl p-6">
+                    <h4 class="text-emerald-400 font-bold flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-circle-check text-xl"></i> 藍圖優勢點 (Strengths)
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="text-emerald-500 shrink-0 mt-0.5"><i class="fa-solid fa-check-double"></i></span>
+                            <div>
+                                <strong class="text-emerald-300 text-sm font-semibold block mb-0.5">問題定義極其明確</strong>
+                                <p class="text-slate-300 text-sm">您精準地鎖定「分析素材，預測點擊率」的核心痛點，這在 AI 專案中至關重要，能有效避免資源分散。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-emerald-500 shrink-0 mt-0.5"><i class="fa-solid fa-check-double"></i></span>
+                            <div>
+                                <strong class="text-emerald-300 text-sm font-semibold block mb-0.5">優異的數據資產意識</strong>
+                                <p class="text-slate-300 text-sm">您已規劃了多種相關數據源，包括歷史行銷活動、網站分析以及社群互動，對重要數據資產有了初步掌握。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-amber-950/20 border border-amber-900/50 rounded-xl p-6">
+                    <h4 class="text-amber-400 font-bold flex items-center gap-2 mb-4">
+                        <i class="fa-solid fa-triangle-exclamation text-xl"></i> 可以優化與加強的點 (Areas to Improve)
+                    </h4>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3">
+                            <span class="text-amber-500 shrink-0 mt-0.5"><i class="fa-solid fa-circle-exclamation"></i></span>
+                            <div>
+                                <strong class="text-amber-300 text-sm font-semibold block mb-0.5">「組合」定義需再擴充</strong>
+                                <p class="text-slate-300 text-sm">目前僅限於文案與圖片，但實際上發布平台、目標受眾及活動類型對點擊率影響甚謬，不可忽略。</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-amber-500 shrink-0 mt-0.5"><i class="fa-solid fa-circle-exclamation"></i></span>
+                            <div>
+                                <strong class="text-amber-300 text-sm font-semibold block mb-0.5">數據欄位粒度不足</strong>
+                                <p class="text-slate-300 text-sm">雖然列出了數據來源，但缺乏文案特徵提取與圖片標籤化的具體描述。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
+                <h4 class="text-lg font-bold text-white flex items-center gap-2 mb-6">
+                    <i class="fa-solid fa-database text-brand-500"></i> 資料擴充建議指南
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                        <h5 class="text-sm font-bold text-white mb-3">1. 行銷活動細節（微觀層面）</h5>
+                        <p class="text-xs text-slate-300 leading-relaxed">關鍵字（優惠、限量、抽獎）、情感傾向（興奮、專業）、字數統計、圖片類型與主色調（暖/冷色系）。</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                        <h5 class="text-sm font-bold text-white mb-3">2. 時間與環境因素（宏觀層面）</h5>
+                        <p class="text-xs text-slate-300 leading-relaxed">發布時段（星期幾、時段）、特殊節慶（過年、雙11、聖誕節檔期效果）及當前網路流行趨勢梗。</p>
+                    </div>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-5">
+                        <h5 class="text-sm font-bold text-white mb-3">3. 競品分析（參考層面）</h5>
+                        <p class="text-xs text-slate-300 leading-relaxed">競爭對手常用的活動類型訴求、常用的素材設計視覺風格與對手特定貼文的社群熱度互動量。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-simulator" class="tab-content hidden">
+            
+            <div class="mb-6 bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row items-center justify-between gap-4 shadow-md">
+                <div class="flex items-center gap-2">
+                    <span class="text-brand-500 text-lg"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <div>
+                        <h4 class="text-sm font-bold text-white">離線資料備份與雲端載入中心</h4>
+                        <p class="text-[11px] text-slate-400">所有測試歷史均會自動保存於瀏覽器內。此處可進行離線備份匯出或跨裝置載入。</p>
+                    </div>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                    <input type="file" id="import-file" accept=".json" onchange="importData(event)" class="hidden">
+                    
+                    <button onclick="document.getElementById('import-file').click()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-lg border border-slate-700 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-file-import text-teal-400"></i> 匯入備份 (JSON)
+                    </button>
+                    <button onclick="exportData()" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold py-2 px-3 rounded-lg border border-slate-700 flex items-center gap-1.5 transition-all">
+                        <i class="fa-solid fa-file-export text-brand-400"></i> 匯出備份 (JSON)
+                    </button>
+                    <button onclick="clearAllHistory()" class="text-xs bg-rose-950/40 hover:bg-rose-900/40 text-rose-300 py-2 px-3 rounded-lg border border-rose-900/50 flex items-center gap-1.5 transition-all ml-auto md:ml-0">
+                        <i class="fa-solid fa-trash-can"></i> 清空紀錄
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6 space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-sliders text-brand-500"></i> 素材特徵配置器
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-1">調整當前文案與圖片特徵，系統將自動即時運算評分：</p>
+                            </div>
+                            <div class="w-1/3">
+                                <input type="text" id="sim-title" placeholder="命名此組合 (如: 日系陶器初秋新品)" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-1.5 px-2.5 text-xs text-slate-200 focus:border-brand-500 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <hr class="border-slate-800" />
+
+                        <div>
+                            <h4 class="text-sm font-bold text-brand-400 mb-3 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> 一、文案特徵 (Copywriting)
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="text-xs text-slate-400 flex justify-between mb-1.5">
+                                        <span>預期文案長度（字數）</span>
+                                        <span id="copy-len-display" class="text-brand-400 font-bold">35 字</span>
+                                    </label>
+                                    <input type="range" id="copy-len" min="10" max="150" value="35" oninput="calculateCTR()" class="w-full accent-brand-500 bg-slate-800 h-2 rounded-lg appearance-none cursor-pointer">
+                                </div>
+                                <div>
+                                    <label class="text-xs text-slate-400 block mb-2">文案關鍵字標籤</label>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                            <input type="checkbox" id="kw-promo" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                            <span class="text-xs text-slate-300">強促銷 (優惠/限量)</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                            <input type="checkbox" id="kw-new" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                            <span class="text-xs text-slate-300">新品/體驗</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                            <input type="checkbox" id="kw-cta" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                            <span class="text-xs text-slate-300">強 CTA (立即點擊)</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                            <input type="checkbox" id="kw-emotion" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                            <span class="text-xs text-slate-300">情感共鳴 (溫馨)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="border-slate-800" />
+
+                        <div>
+                            <h4 class="text-sm font-bold text-teal-400 mb-3 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-teal-500"></span> 二、圖片視覺特徵 (Visual)
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs text-slate-400 block mb-1.5">圖片呈現類型</label>
+                                    <select id="img-type" onchange="calculateCTR()" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-300">
+                                        <option value="product">產品特寫 (+4分)</option>
+                                        <option value="scene">人物互動/場景氛圍 (+3分)</option>
+                                        <option value="infographic">資訊圖表 (+2分)</option>
+                                        <option value="stock">一般庫存情境圖 (-2分)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs text-slate-400 block mb-1.5">圖片明暗/色調</label>
+                                    <select id="img-color" onchange="calculateCTR()" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-300">
+                                        <option value="bright">明亮色調 / 暖色系 (+2分)</option>
+                                        <option value="soft">柔和色調 (+1分)</option>
+                                        <option value="dark">偏暗 / 冷色調 (-1分)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-4">
+                                <label class="text-xs text-slate-400 block mb-2">圖片包含元素</label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                        <input type="checkbox" id="img-discount" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                        <span class="text-xs text-slate-300">明顯折扣數字</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                        <input type="checkbox" id="img-logo" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                        <span class="text-xs text-slate-300">清晰品牌 LOGO</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 bg-slate-950 p-2.5 rounded-lg border border-slate-800 cursor-pointer hover:border-slate-700">
+                                        <input type="checkbox" id="img-clutter" onchange="calculateCTR()" class="rounded border-slate-800 bg-slate-900 text-brand-600">
+                                        <span class="text-xs text-slate-300">構圖過於複雜/雜亂</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="border-slate-800" />
+
+                        <div>
+                            <h4 class="text-sm font-bold text-amber-400 mb-3 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 三、發布與情境參數 (Context)
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-xs text-slate-400 block mb-1.5">預計發布時段</label>
+                                    <select id="ctx-time" onchange="calculateCTR()" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-300">
+                                        <option value="golden">週二至週四 下午 14:00 - 17:00 (黃金時段)</option>
+                                        <option value="normal">一般日間時段</option>
+                                        <option value="offpeak">深夜 / 工作日清晨 (-2分)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs text-slate-400 block mb-1.5">主要發布管道</label>
+                                    <select id="ctx-platform" onchange="calculateCTR()" class="w-full bg-slate-950 border border-slate-800 rounded-lg py-2 px-3 text-xs text-slate-300">
+                                        <option value="line">LINE 官方帳號 (LINE OA)</option>
+                                        <option value="fb">Facebook 廣告/貼文</option>
+                                        <option value="ig">Instagram 廣告/限動</option>
+                                        <option value="edm">Email 行銷信件 (EDM)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-2">
+                            <button onclick="saveCurrentSimulation()" class="w-full bg-gradient-to-r from-brand-600 to-teal-600 hover:from-brand-500 hover:to-teal-500 text-white font-bold py-3 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg transition-all">
+                                <i class="fa-solid fa-cloud-arrow-up"></i> 保存此素材組合至本地紀錄（自動同步查詢庫）
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
+                        <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-folder-open text-brand-500"></i> 已存素材歷史查詢庫 (<span id="history-count">0</span>)
+                        </h3>
+                        <div id="history-list" class="max-h-60 overflow-y-auto custom-scrollbar space-y-2 pr-1">
+                            <p class="text-xs text-slate-500 text-center py-4">暫無保存紀錄，請於上方配置後點擊保存。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex flex-col gap-6">
+                    <div class="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800 rounded-xl p-6 shadow-xl relative overflow-hidden flex-1">
+                        <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl -z-10"></div>
+                        <h4 class="text-sm font-bold text-slate-300 uppercase tracking-wider mb-6 text-center">AI 點擊率 (CTR) 預測分析報告</h4>
+                        <div class="flex flex-col items-center justify-center my-6">
+                            <div class="relative w-44 h-44 rounded-full flex items-center justify-center border-4 border-slate-800">
+                                <div id="score-ring" class="absolute inset-0 rounded-full border-4 border-transparent border-t-emerald-500 transition-all duration-500" style="transform: rotate(0deg);"></div>
+                                <div class="text-center z-10">
+                                    <span class="text-xs text-slate-400 block">綜合素材評分</span>
+                                    <span id="ctr-score" class="text-5xl font-extrabold text-white">0</span>
+                                    <span class="text-xs text-slate-400 block mt-1">分</span>
+                                </div>
+                            </div>
+                            <div id="ctr-level-badge" class="mt-6 px-4 py-1.5 rounded-full text-xs font-bold transition-all bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                HIGH CTR · 高點擊潛力
+                            </div>
+                        </div>
+                        <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 mb-6 text-center">
+                            <span class="text-xs text-slate-400 block mb-1">預期 CTR 點擊率區間</span>
+                            <span id="ctr-percentage" class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">4.5% - 7.5%</span>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="text-xs font-bold text-slate-400 block"><i class="fa-solid fa-wand-magic-sparkles text-brand-500 mr-1"></i> AI 即時調優與歸因分析：</span>
+                            <div id="ai-tips-container" class="space-y-2 text-xs"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="tab-roadmap" class="tab-content hidden space-y-8">
+            <div class="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-brand-500"></i> AI 專案落地工作清單 (狀態自動本地保存)
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">請團隊人員落實各項工作後勾選，進度會即時且安全的保存在此電腦中。</p>
+                    </div>
+                    <button onclick="resetChecklist()" class="text-xs text-slate-400 hover:text-white flex items-center gap-1">
+                        <i class="fa-solid fa-rotate-left"></i> 重設工作清單進度
+                    </button>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-900">
+                            <span class="bg-brand-500/10 text-brand-400 text-xs font-bold px-2 py-1 rounded">PHASE 1</span>
+                            <span class="text-xs text-slate-500">數據清洗與標準模板建立</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex items-start gap-3 p-3 bg-slate-900/40 rounded-lg cursor-pointer hover:bg-slate-900/80">
+                                <input type="checkbox" id="task-1" onchange="updateProgress()" class="task-checkbox mt-1 rounded border-slate-800 bg-slate-900 text-brand-600">
+                                <div class="text-xs">
+                                    <strong class="text-slate-200 block mb-1">1.1 建立標準化行銷數據模板</strong>
+                                    <p class="text-slate-400">整合歷史點擊率、曝光量及新增的文案特徵、圖片元素標籤欄位。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 bg-slate-900/40 rounded-lg cursor-pointer hover:bg-slate-900/80">
+                                <input type="checkbox" id="task-2" onchange="updateProgress()" class="task-checkbox mt-1 rounded border-slate-800 bg-slate-900 text-brand-600">
+                                <div class="text-xs">
+                                    <strong class="text-slate-200 block mb-1">1.2 定期匯入現有平台數據</strong>
+                                    <p class="text-slate-400">定期匯出 LINE OA 後台、FB Ads 數據並對應填入。完成歷史優劣素材人工標籤。</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-5">
+                        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-900">
+                            <span class="bg-teal-500/10 text-teal-400 text-xs font-bold px-2 py-1 rounded">PHASE 2</span>
+                            <span class="text-xs text-slate-500">預測引擎落地實踐</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex items-start gap-3 p-3 bg-slate-900/40 rounded-lg cursor-pointer hover:bg-slate-900/80">
+                                <input type="checkbox" id="task-3" onchange="updateProgress()" class="task-checkbox mt-1 rounded border-slate-800 bg-slate-900 text-teal-600">
+                                <div class="text-xs">
+                                    <strong class="text-slate-200 block mb-1">2.1 部署第一階段加權公式</strong>
+                                    <p class="text-slate-400">將本網頁模擬器的計分規則實作於內部 Google Sheets 或 Excel 中供團隊普及使用。</p>
+                                </div>
+                            </label>
+                            <label class="flex items-start gap-3 p-3 bg-slate-900/40 rounded-lg cursor-pointer hover:bg-slate-900/80">
+                                <input type="checkbox" id="task-4" onchange="updateProgress()" class="task-checkbox mt-1 rounded border-slate-800 bg-slate-900 text-teal-600">
+                                <div class="text-xs">
+                                    <strong class="text-slate-200 block mb-1">2.2 行銷活動群發前強制預篩</strong>
+                                    <p class="text-slate-400">在企劃會議中投入使用，發布前必須測試至少 3 組配置並保存追蹤紀錄。</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-8 px-4 mt-12 text-center text-slate-500 text-xs">
+        <p>© 2026 智慧行銷顧問團隊 & TONY 老師版權所有。安全防護・離線備份技術支援。</p>
+    </footer>
+
+    <script>
+        // 全局狀態物件
+        let simHistory = [];
+
+        // 頁籤切換
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('block');
+            });
+            const targetContent = document.getElementById(tabId);
+            targetContent.classList.remove('hidden');
+            targetContent.classList.add('block');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-brand-500', 'text-brand-500');
+                btn.classList.add('border-transparent', 'text-slate-400', 'hover:text-slate-200');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('border-brand-500', 'text-brand-500');
+            activeBtn.classList.remove('border-transparent', 'text-slate-400', 'hover:text-slate-200');
+        }
+
+        // 核心運算：CTR 預測計分
+        function calculateCTR() {
+            let score = 0;
+            let feedback = [];
+
+            const lenValue = parseInt(document.getElementById('copy-len').value);
+            const copyLenDisplay = document.getElementById('copy-len-display');
+            if (lenValue >= 20 && lenValue <= 50) {
+                score += 2;
+                copyLenDisplay.innerText = `${lenValue} 字 (黃金長度 +2分)`;
+                copyLenDisplay.className = "text-emerald-400 font-bold text-xs";
+            } else if (lenValue > 100) {
+                score -= 1;
+                copyLenDisplay.innerText = `${lenValue} 字 (篇幅過長 -1分)`;
+                copyLenDisplay.className = "text-rose-400 font-bold text-xs";
+                feedback.push("文案字數偏長，社群速食閱讀環境下容易失焦，建議減至 50 字內。");
+            } else {
+                copyLenDisplay.innerText = `${lenValue} 字 (常規字數)`;
+                copyLenDisplay.className = "text-slate-400 font-bold text-xs";
+            }
+
+            if (document.getElementById('kw-promo').checked) score += 5;
+            else feedback.push("未帶有『優惠/限量』強吸引字眼，可能無法激發即時點擊動機。");
+            
+            if (document.getElementById('kw-new').checked) score += 3;
+            
+            if (document.getElementById('kw-cta').checked) score += 3;
+            else feedback.push("缺少明確導流行動字眼（如: 立即點擊、領取優惠），受眾可能看完即滑過。");
+            
+            if (document.getElementById('kw-emotion').checked) score += 2;
+
+            const imgType = document.getElementById('img-type').value;
+            if (imgType === 'product') score += 4;
+            else if (imgType === 'scene') score += 3;
+            else if (imgType === 'infographic') score += 2;
+            else if (imgType === 'stock') {
+                score -= 2;
+                feedback.push("使用一般罐頭圖庫辨識度較差，強烈建議更換為自有產品實拍或情境互動主圖。");
+            }
+
+            const imgColor = document.getElementById('img-color').value;
+            if (imgColor === 'bright') score += 2;
+            else if (imgColor === 'soft') score += 1;
+            else if (imgColor === 'dark') {
+                score -= 1;
+                feedback.push("主圖視覺調性偏暗，在快速滑動的動態牆中不易突圍，建議拉高明度。");
+            }
+
+            if (document.getElementById('img-discount').checked) score += 3;
+            if (document.getElementById('img-logo').checked) score += 1;
+            if (document.getElementById('img-clutter').checked) {
+                score -= 2;
+                feedback.push("圖片元素混雜，會造成重點錯置，建議將無關裝飾物去除、簡化版面。");
+            }
+
+            const ctxTime = document.getElementById('ctx-time').value;
+            if (ctxTime === 'golden') score += 3;
+            else if (ctxTime === 'offpeak') {
+                score -= 2;
+                feedback.push("群發時間處於半夜或清晨離峰，觸及效果通常大打折扣，建議調整。");
+            }
+
+            score = Math.max(0, Math.min(25, score));
+            document.getElementById('ctr-score').innerText = score;
+            document.getElementById('score-ring').style.transform = `rotate(${(score / 25) * 180}deg)`;
+
+            const levelBadge = document.getElementById('ctr-level-badge');
+            const pctText = document.getElementById('ctr-percentage');
+            
+            if (score >= 14) {
+                levelBadge.innerText = "HIGH CTR · 高點擊潛力";
+                levelBadge.className = "mt-6 px-4 py-1.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                pctText.innerText = "4.5% - 7.5%";
+                pctText.className = "text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300";
+            } else if (score >= 7) {
+                levelBadge.innerText = "MEDIUM CTR · 中等點擊潛力";
+                levelBadge.className = "mt-6 px-4 py-1.5 rounded-full text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20";
+                pctText.innerText = "2.0% - 4.4%";
+                pctText.className = "text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-yellow-300";
+            } else {
+                levelBadge.innerText = "LOW CTR · 低點擊潛力";
+                levelBadge.className = "mt-6 px-4 py-1.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20";
+                pctText.innerText = "0.5% - 1.9%";
+                pctText.className = "text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-orange-300";
+            }
+
+            const tipsContainer = document.getElementById('ai-tips-container');
+            tipsContainer.innerHTML = '';
+            if (feedback.length === 0) {
+                tipsContainer.innerHTML = `<div class="bg-emerald-950/20 p-3 rounded-lg border border-emerald-900/30 text-emerald-300 text-[11px]">✦ 素材完美配置！符合全部黃金預測高CTR基準，建議直接發布或作為測試基準。</div>`;
+            } else {
+                feedback.slice(0, 3).forEach(tip => {
+                    tipsContainer.innerHTML += `<div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800 text-[11px] text-slate-300 flex items-start gap-1.5"><span class="text-amber-500 font-bold">•</span><span>${tip}</span></div>`;
+                });
+            }
+        }
+
+        // ==========================================
+        // 資料儲存、雲端載入與備份核心功能
+        // ==========================================
+
+        // 保存當前模擬設定到本地查詢庫
+        function saveCurrentSimulation() {
+            let titleInput = document.getElementById('sim-title').value.trim();
+            const title = titleInput || `未命名素材組 (${new Date().toLocaleTimeString()})`;
+            
+            const currentConfig = {
+                id: 'sim_' + Date.now(),
+                title: title,
+                timeString: new Date().toLocaleString(),
+                score: document.getElementById('ctr-score').innerText,
+                percentage: document.getElementById('ctr-percentage').innerText,
+                // 保存具體控制項狀態
+                copyLen: document.getElementById('copy-len').value,
+                kwPromo: document.getElementById('kw-promo').checked,
+                kwNew: document.getElementById('kw-new').checked,
+                kwCta: document.getElementById('kw-cta').checked,
+                kwEmotion: document.getElementById('kw-emotion').checked,
+                imgType: document.getElementById('img-type').value,
+                imgColor: document.getElementById('img-color').value,
+                imgDiscount: document.getElementById('img-discount').checked,
+                imgLogo: document.getElementById('img-logo').checked,
+                imgClutter: document.getElementById('img-clutter').checked,
+                ctxTime: document.getElementById('ctx-time').value,
+                ctxPlatform: document.getElementById('ctx-platform').value
+            };
+
+            simHistory.unshift(currentConfig); // 新存的排最前
+            localStorage.setItem('ai_blueprint_sim_history', JSON.stringify(simHistory));
+            
+            // 清空命名欄位並刷新歷史清單
+            document.getElementById('sim-title').value = '';
+            renderHistoryList();
+            alert(`成功保存組合【${title}】至查詢歷史庫！`);
+        }
+
+        // 渲染查詢庫清單
+        function renderHistoryList() {
+            const container = document.getElementById('history-list');
+            const countText = document.getElementById('history-count');
+            countText.innerText = simHistory.length;
+
+            if (simHistory.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-500 text-center py-4">暫無保存紀錄，請於上方配置後點擊保存。</p>`;
+                return;
+            }
+
+            container.innerHTML = '';
+            simHistory.forEach(item => {
+                let badgeClass = "text-rose-400 bg-rose-500/10 border-rose-500/20";
+                if (item.score >= 14) badgeClass = "text-emerald-400 bg-emerald-500/10 border-emerald-500/20";
+                else if (item.score >= 7) badgeClass = "text-amber-400 bg-amber-500/10 border-amber-500/20";
+
+                container.innerHTML += `
+                    <div class="bg-slate-950/80 p-3 rounded-lg border border-slate-800 flex items-center justify-between gap-2 hover:border-slate-700 transition-colors">
+                        <div class="min-w-0 flex-1 cursor-pointer" onclick="loadSimulation('${item.id}')" title="點擊還原載入此組合資料">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-xs font-bold text-slate-200 truncate">${item.title}</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded border font-mono ${badgeClass}">${item.score}分 (CTR ${item.percentage})</span>
+                            </div>
+                            <span class="text-[10px] text-slate-500 block"><i class="fa-solid fa-clock mr-1"></i>儲存時間: ${item.timeString}</span>
+                        </div>
+                        <button onclick="deleteHistoryItem('${item.id}')" class="text-slate-600 hover:text-rose-400 p-1 text-xs transition-colors" title="刪除此紀錄">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        // 從歷史查詢庫載入數據還原至配置器中
+        function loadSimulation(id) {
+            const config = simHistory.find(item => item.id === id);
+            if (!config) return;
+
+            // 還原狀態值
+            document.getElementById('sim-title').value = config.title;
+            document.getElementById('copy-len').value = config.copyLen;
+            document.getElementById('kw-promo').checked = config.kwPromo;
+            document.getElementById('kw-new').checked = config.kwNew;
+            document.getElementById('kw-cta').checked = config.kwCta;
+            document.getElementById('kw-emotion').checked = config.kwEmotion;
+            document.getElementById('img-type').value = config.imgType;
+            document.getElementById('img-color').value = config.imgColor;
+            document.getElementById('img-discount').checked = config.imgDiscount;
+            document.getElementById('img-logo').checked = config.imgLogo;
+            document.getElementById('img-clutter').checked = config.imgClutter;
+            document.getElementById('ctx-time').value = config.ctxTime;
+            document.getElementById('ctx-platform').value = config.ctxPlatform;
+
+            // 觸發重新運算以刷新報告
+            calculateCTR();
+            alert(`已載入並還原素材組合【${config.title}】的設定參數！`);
+        }
+
+        // 刪除單筆紀錄
+        function deleteHistoryItem(id) {
+            if (confirm("確定要刪除這筆素材保存紀錄嗎？")) {
+                simHistory = simHistory.filter(item => item.id !== id);
+                localStorage.setItem('ai_blueprint_sim_history', JSON.stringify(simHistory));
+                renderHistoryList();
+            }
+        }
+
+        // 離線備份下載：導出完整的 JSON 檔案
+        function exportData() {
+            if (simHistory.length === 0) {
+                alert("當前查詢歷史庫內無任何資料，不需進行備份導出。");
+                return;
+            }
+            // 封裝歷史紀錄與當前工作清單勾選狀態一併打包備份
+            const backupPackage = {
+                exportDate: new Date().toISOString(),
+                version: "2026_V1",
+                history: simHistory,
+                checklistState: JSON.parse(localStorage.getItem('ai_blueprint_progress_state')) || {}
+            };
+
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupPackage, null, 2));
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `AI_行銷預測素材庫備份_${new Date().toISOString().slice(0,10)}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+        }
+
+        // 從離線備份檔案(JSON)中載入數據復原
+        function importData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const parsedData = JSON.parse(e.target.result);
+                    // 驗證檔案基本格式
+                    if (parsedData && Array.isArray(parsedData.history)) {
+                        if (confirm(`檢測到備份檔包含 ${parsedData.history.length} 筆歷史素材紀錄。是否要將其載入並合併至現有庫中？`)) {
+                            // 合併新舊資料，並利用 ID 去除重複
+                            let combined = [...parsedData.history, ...simHistory];
+                            let uniqueMap = new Map();
+                            combined.forEach(item => uniqueMap.set(item.id, item));
+                            simHistory = Array.from(uniqueMap.values());
+                            
+                            // 儲存至本地並刷新畫面
+                            localStorage.setItem('ai_blueprint_sim_history', JSON.stringify(simHistory));
+                            renderHistoryList();
+
+                            // 如果備份檔有工作清單狀態，一併還原
+                            if (parsedData.checklistState && Object.keys(parsedData.checklistState).length > 0) {
+                                localStorage.setItem('ai_blueprint_progress_state', JSON.stringify(parsedData.checklistState));
+                                loadProgress();
+                            }
+
+                            alert("離線備份資料載入並合併還原成功！");
+                        }
+                    } else {
+                        alert("檔案格式不合，請確認上傳的是正確的 AI 素材庫 JSON 備份檔。");
+                    }
+                } catch (err) {
+                    alert("檔案讀取出錯，內容可能非合法的 JSON 格式。");
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = ''; // 清空選擇狀態以利下次重複觸發
+        }
+
+        // 清空所有歷史查詢資料
+        function clearAllHistory() {
+            if (confirm("警告：這將徹底清空本地所有的素材模擬保存纪录！建議您清空前先進行『匯出備份』。是否仍要繼續？")) {
+                simHistory = [];
+                localStorage.removeItem('ai_blueprint_sim_history');
+                renderHistoryList();
+            }
+        }
+
+        // ==========================================
+        // 落地清單進度計算與持久化儲存
+        // ==========================================
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-checkbox');
+            const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const progressPercent = checkboxes.length ? Math.round((checkedCount / checkboxes.length) * 100) : 0;
+
+            document.getElementById('global-progress-text').innerText = `${progressPercent}%`;
+            document.getElementById('global-progress-bar').style.width = `${progressPercent}%`;
+
+            const state = {};
+            checkboxes.forEach(cb => { state[cb.id] = cb.checked; });
+            localStorage.setItem('ai_blueprint_progress_state', JSON.stringify(state));
+        }
+
+        function loadProgress() {
+            const savedState = localStorage.getItem('ai_blueprint_progress_state');
+            if (savedState) {
+                const state = JSON.parse(savedState);
+                Object.keys(state).forEach(id => {
+                    const cb = document.getElementById(id);
+                    if (cb) cb.checked = state[id];
+                });
+            }
+            updateProgress();
+        }
+
+        function resetChecklist() {
+            if (confirm("確定要將工作落地清單的所有勾選進度歸零嗎？")) {
+                document.querySelectorAll('.task-checkbox').forEach(cb => cb.checked = false);
+                updateProgress();
+            }
+        }
+
+        // ==========================================
+        // 初始化載入
+        // ==========================================
+        window.onload = function() {
+            // 讀取本地保存的歷史紀錄數據
+            const savedHistory = localStorage.getItem('ai_blueprint_sim_history');
+            if (savedHistory) {
+                try { simHistory = JSON.parse(savedHistory); } catch(e) { simHistory = []; }
+            }
+            
+            calculateCTR();     // 觸發首次基本評分計算
+            renderHistoryList(); // 渲染查詢歷史庫卡片清單
+            loadProgress();     // 載入本地工作進度條狀態
+        }
+    </script>
+</body>
+</html>
